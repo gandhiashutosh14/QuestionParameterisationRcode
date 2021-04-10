@@ -16,7 +16,7 @@ library('dplyr')
 # .................set working directory and read the raw data ..............................................
 
 # setwd()
-data <- newdata
+# data <- newdata
 
 ### read question_parameters from centerlised CSV file
 ques_param<- read.csv(file = "C:/Users/DN Gandhi/Downloads/IRT/IRT/Output/ques_param.csv", sep = ',', header = TRUE , stringsAsFactors = FALSE)
