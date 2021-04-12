@@ -2,7 +2,7 @@
 # args <- commandArgs(trailingOnly = TRUE)
 # srcFile <- args[1]
 
-srcFile="C:/Users/DN Gandhi/Downloads/IRT/IRT/blob/ques_input_file.csv"
+srcFile="input/ques_input_file.csv"
 data<- read.csv(file = srcFile, sep = ',', header = TRUE , stringsAsFactors = FALSE)
 
 
@@ -19,7 +19,7 @@ library('dplyr')
 # data <- newdata
 
 ### read question_parameters from centerlised CSV file
-ques_param<- read.csv(file = "C:/Users/DN Gandhi/Downloads/IRT/IRT/Output/ques_param.csv", sep = ',', header = TRUE , stringsAsFactors = FALSE)
+ques_param<- read.csv(file = "output/ques_param.csv", sep = ',', header = TRUE , stringsAsFactors = FALSE)
 
 ### check if all required columns present in inout
 
@@ -71,7 +71,7 @@ for (c in sections){
   
   ## Learn 2pl parameters using tpm function
   model <- paste(test_id,c,"2pl",sep="_")
-  model_name <- paste("C:/Users/DN Gandhi/Downloads/IRT/IRT/Output/",model,".rds",sep="")
+  model_name <- paste("output/",model,".rds",sep="")
   print(model_name)
   model = ltm(resp_wide_df2 ~ z1, IRT.param = TRUE)
  
@@ -93,7 +93,7 @@ for (c in sections){
   colnames(ques_cor_resp)[2] <- "correctness_per"
   questions_df <- merge(ques_parameters, ques_cor_resp, by.x="question_code", by.y="Category")
   questions_df_final <- rbind(questions_df_final,questions_df)
-  write.csv(questions_df_final, file = "C:/Users/DN Gandhi/Downloads/IRT/IRT/Output/ques_param.csv", row.names = FALSE)
+  write.csv(questions_df_final, file = "output/ques_param.csv", row.names = FALSE)
   print("Question parameterisation done successfully")
 }
 
